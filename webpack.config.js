@@ -9,7 +9,7 @@ module.exports = {
     library: "fancy-react-ui",
     libraryTarget: "umd",
     umdNamedDefine: true,
-    // clean: true,
+    clean: true,
   },
   resolve: {
     extensions: [".ts", ".tsx", ".js", ".jsx"],
