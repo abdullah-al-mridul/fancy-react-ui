@@ -6,7 +6,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, "dist"),
     filename: "index.js",
-    library: "fancy-loader-react",
+    library: "fancy-react-ui",
     libraryTarget: "umd",
     umdNamedDefine: true,
     // clean: true,
