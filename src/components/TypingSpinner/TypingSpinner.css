@@ -1,0 +1,32 @@
+.typing-spinner {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: calc(var(--dot-size) * 0.5);
+  padding: calc(var(--dot-size) * 0.5);
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 100px;
+  --speed: 1s;
+  --dot-size: 10px;
+  --dot-color: #2196f3;
+}
+
+.typing-dot {
+  width: var(--dot-size);
+  height: var(--dot-size);
+  background-color: var(--dot-color);
+  border-radius: 50%;
+  animation: typing-bounce calc(var(--speed) * 0.8) ease-in-out infinite;
+}
+
+@keyframes typing-bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.4;
+  }
+  50% {
+    transform: translateY(-40%);
+    opacity: 1;
+  }
+}

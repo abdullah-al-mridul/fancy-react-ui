@@ -1,0 +1,59 @@
+.grid-spinner {
+  position: relative;
+  display: inline-grid;
+  grid-template-columns: repeat(3, var(--block-size));
+  gap: var(--gap);
+  transform: scale(var(--scale));
+  transform-origin: 0 0;
+  --speed: 1s;
+  --gap: 4px;
+  --scale: 1;
+  --block-size: 8px;
+}
+
+.grid-block {
+  border-radius: 2px;
+  animation: grid-fade calc(var(--speed) * 1.5) ease infinite;
+}
+
+@keyframes grid-fade {
+  0%,
+  70%,
+  100% {
+    opacity: 0.3;
+    transform: scale(0.8);
+  }
+  35% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Alternate animation delays for visual interest */
+.grid-block:nth-child(1) {
+  animation-delay: calc(var(--speed) * 0.1);
+}
+.grid-block:nth-child(2) {
+  animation-delay: calc(var(--speed) * 0.2);
+}
+.grid-block:nth-child(3) {
+  animation-delay: calc(var(--speed) * 0.3);
+}
+.grid-block:nth-child(4) {
+  animation-delay: calc(var(--speed) * 0.4);
+}
+.grid-block:nth-child(5) {
+  animation-delay: calc(var(--speed) * 0.5);
+}
+.grid-block:nth-child(6) {
+  animation-delay: calc(var(--speed) * 0.6);
+}
+.grid-block:nth-child(7) {
+  animation-delay: calc(var(--speed) * 0.7);
+}
+.grid-block:nth-child(8) {
+  animation-delay: calc(var(--speed) * 0.8);
+}
+.grid-block:nth-child(9) {
+  animation-delay: calc(var(--speed) * 0.9);
+}

@@ -1,0 +1,40 @@
+.clock-spinner {
+  position: relative;
+  display: inline-block;
+  border-style: solid;
+  border-radius: 50%;
+  --speed: 1s;
+}
+
+.clock-hand {
+  position: absolute;
+  left: 50%;
+  bottom: 50%;
+  transform-origin: bottom center;
+  border-radius: 100px;
+}
+
+.hour-hand {
+  animation: rotate-hand calc(var(--speed) * 12) linear infinite;
+}
+
+.minute-hand {
+  animation: rotate-hand var(--speed) linear infinite;
+}
+
+.clock-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+}
+
+@keyframes rotate-hand {
+  0% {
+    transform: translateX(-50%) rotate(0deg);
+  }
+  100% {
+    transform: translateX(-50%) rotate(360deg);
+  }
+}

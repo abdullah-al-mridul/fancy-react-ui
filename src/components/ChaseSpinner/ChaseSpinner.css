@@ -1,0 +1,71 @@
+.chase-spinner {
+  position: relative;
+  display: inline-block;
+  --speed: 0.8s;
+}
+
+.chase-circle {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  animation: chase-rotate var(--speed) infinite linear;
+}
+
+.chase-dot {
+  position: absolute;
+  width: 25%;
+  height: 25%;
+  left: 0;
+  top: 0;
+}
+
+.chase-dot::before {
+  content: "";
+  display: block;
+  width: 25%;
+  height: 25%;
+  background-color: inherit;
+  border-radius: 50%;
+  animation: chase-bounce calc(var(--speed) * 2) infinite ease-in-out;
+}
+
+/* Dot positions and delays */
+.chase-dot:nth-child(1) {
+  animation-delay: -1.1s;
+}
+
+.chase-dot:nth-child(2) {
+  animation-delay: -0.9s;
+}
+
+.chase-dot:nth-child(3) {
+  animation-delay: -0.7s;
+}
+
+.chase-dot:nth-child(4) {
+  animation-delay: -0.5s;
+}
+
+.chase-dot:nth-child(5) {
+  animation-delay: -0.3s;
+}
+
+.chase-dot:nth-child(6) {
+  animation-delay: -0.1s;
+}
+
+@keyframes chase-rotate {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes chase-bounce {
+  0%,
+  100% {
+    transform: scale(0.3) translate(150%, 0);
+  }
+  50% {
+    transform: scale(1) translate(100%, 0);
+  }
+}

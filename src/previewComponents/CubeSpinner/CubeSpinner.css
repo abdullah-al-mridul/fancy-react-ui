@@ -1,0 +1,113 @@
+.cube-spinner {
+  position: relative;
+  display: inline-block;
+  --speed: 1s;
+  --size: 40px;
+  --color: #2196f3;
+  --half: calc(var(--size) * 0.5);
+  transform-style: preserve-3d;
+}
+
+.cube {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  animation: cube-rotate calc(var(--speed) * 3) linear infinite;
+  transform: rotateX(-25deg) rotateY(-25deg); /* Initial tilt */
+}
+
+.face {
+  position: absolute;
+  width: var(--size);
+  height: var(--size);
+  background: linear-gradient(
+    145deg,
+    rgba(255, 255, 255, 0.5) 0%,
+    rgba(var(--color-rgb), 0.4) 50%,
+    rgba(var(--color-rgb), 0.2) 100%
+  );
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: inset 0 0 15px rgba(var(--color-rgb), 0.3);
+  transition: all 0.3s ease;
+}
+
+/* Different opacity for each face to create depth */
+.front {
+  transform: translateZ(var(--half));
+  background-color: rgba(var(--color-rgb), 0.4);
+}
+
+.back {
+  transform: rotateY(180deg) translateZ(var(--half));
+  background-color: rgba(var(--color-rgb), 0.2);
+}
+
+.right {
+  transform: rotateY(90deg) translateZ(var(--half));
+  background-color: rgba(var(--color-rgb), 0.3);
+}
+
+.left {
+  transform: rotateY(-90deg) translateZ(var(--half));
+  background-color: rgba(var(--color-rgb), 0.3);
+}
+
+.top {
+  transform: rotateX(90deg) translateZ(var(--half));
+  background-color: rgba(var(--color-rgb), 0.5);
+}
+
+.bottom {
+  transform: rotateX(-90deg) translateZ(var(--half));
+  background-color: rgba(var(--color-rgb), 0.1);
+}
+
+@keyframes cube-rotate {
+  0% {
+    transform: rotateX(-25deg) rotateY(-25deg) rotateZ(0);
+  }
+  25% {
+    transform: rotateX(-25deg) rotateY(335deg) rotateZ(0);
+  }
+  50% {
+    transform: rotateX(335deg) rotateY(335deg) rotateZ(0);
+  }
+  75% {
+    transform: rotateX(335deg) rotateY(-25deg) rotateZ(0);
+  }
+  100% {
+    transform: rotateX(-25deg) rotateY(-25deg) rotateZ(0);
+  }
+}
+
+/* Add shine effect */
+.face::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    45deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.2) 50%,
+    transparent 100%
+  );
+  animation: shine calc(var(--speed) * 3) linear infinite;
+}
+
+@keyframes shine {
+  0% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 0.3;
+  }
+}

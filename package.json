@@ -1,0 +1,57 @@
+{
+  "name": "fancy-react-ui",
+  "version": "1.0.7",
+  "main": "dist/index.js",
+  "types": "dist/types/index.d.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack serve --config demo/webpack.config.js",
+    "build": "webpack",
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "vitepress build docs",
+    "docs:preview": "vitepress preview docs"
+  },
+  "files": [
+    "dist"
+  ],
+  "keywords": [
+    "react",
+    "ui",
+    "components",
+    "library",
+    "react-ui",
+    "react-components",
+    "react-ui-components",
+    "react-ui-library",
+    "react-ui-library",
+    "react-ui-library",
+    "react-ui-library"
+  ],
+  "author": "",
+  "license": "ISC",
+  "description": "A react component library for UI components",
+  "dependencies": {
+    "@vitejs/plugin-react": "^4.3.4",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@babel/preset-env": "^7.26.0",
+    "@babel/preset-react": "^7.26.3",
+    "@rollup/plugin-commonjs": "^28.0.2",
+    "@rollup/plugin-node-resolve": "^16.0.0",
+    "@types/react": "^19.0.7",
+    "@types/react-dom": "^19.0.3",
+    "babel-loader": "^9.2.1",
+    "css-loader": "^7.1.2",
+    "rollup": "^4.31.0",
+    "style-loader": "^4.0.0",
+    "ts-loader": "^9.5.2",
+    "typescript": "^5.7.3",
+    "vite-plugin-css": "^1.0.4",
+    "vitepress": "^1.6.0",
+    "webpack": "^5.97.1",
+    "webpack-cli": "^6.0.1",
+    "webpack-dev-server": "^5.2.0"
+  }
+}

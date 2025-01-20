@@ -1,0 +1,22 @@
+html {
+  scroll-behavior: smooth;
+}
+:root {
+  --vp-home-hero-image-background-image: linear-gradient(
+    -45deg,
+    #5b85af70 30%,
+    #fa766a70
+  );
+  --vp-home-hero-image-filter: blur(56px);
+  --vp-home-hero-name-color: transparent;
+  --vp-home-hero-name-background: -webkit-linear-gradient(
+    120deg,
+    #fa766a,
+    #5b85af
+  );
+  --vp-button-brand-bg: #fd5a4b;
+  --vp-button-brand-hover-bg: #fd5a4be3;
+  --vp-button-brand-active-bg: #fd5a4b;
+  --vp-c-brand-1: #fa766a;
+  --vp-c-brand-2: #5b85af;
+}
