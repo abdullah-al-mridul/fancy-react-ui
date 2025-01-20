@@ -1,0 +1,30 @@
+.rotating-spinner {
+  position: relative;
+  display: inline-block;
+}
+
+.rotating-ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-style: solid;
+  border-radius: 50%;
+  border-top-color: transparent !important;
+  border-right-color: transparent !important;
+  animation: rotate-ring linear infinite;
+}
+
+@keyframes rotate-ring {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+/* Alternate rotation direction for even-indexed rings */
+.rotating-ring:nth-child(even) {
+  animation-direction: reverse;
+}

@@ -1,0 +1,70 @@
+.pixel-spinner {
+  position: relative;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  --speed: 1s;
+  --color: #2196f3;
+  --pixel-size: 4px;
+}
+
+.pixel-grid {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  gap: var(--pixel-size);
+}
+
+.pixel {
+  background-color: var(--color);
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transform: scale(0);
+  animation: pixel-fade calc(var(--speed) * 2) ease-in-out infinite;
+  image-rendering: pixelated;
+}
+
+.pixel-text {
+  font-family: "Press Start 2P", monospace;
+  color: var(--color);
+  font-size: calc(var(--pixel-size) * 2);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  animation: pixel-text calc(var(--speed) * 2) steps(4) infinite;
+  white-space: nowrap;
+}
+
+@keyframes pixel-fade {
+  0%,
+  100% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  20%,
+  80% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes pixel-text {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.3;
+  }
+}
+
+/* Add retro pixelated filter */
+@media (min-resolution: 2dppx) {
+  .pixel-grid {
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+  }
+}

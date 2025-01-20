@@ -1,0 +1,34 @@
+.dual-ring-spinner {
+  position: relative;
+  display: inline-block;
+  --speed: 1s;
+}
+
+.outer-ring,
+.inner-ring {
+  position: absolute;
+  border-style: solid;
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.outer-ring {
+  width: 100%;
+  height: 100%;
+  animation: dual-ring-spin var(--speed) linear infinite;
+}
+
+.inner-ring {
+  animation: dual-ring-spin var(--speed) linear infinite reverse;
+}
+
+@keyframes dual-ring-spin {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}

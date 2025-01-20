@@ -1,0 +1,175 @@
+.spinner {
+  display: inline-block;
+  position: relative;
+}
+
+/* Border Spinner */
+.spinner-border {
+  border-style: solid;
+  border-radius: 50%;
+  animation: spin var(--speed, 0.8s) linear infinite;
+}
+
+/* Chase Spinner */
+.spinner-chase {
+  animation: chase var(--speed, 0.8s) infinite linear both;
+}
+
+.chase-dot {
+  width: 25%;
+  height: 25%;
+  position: absolute;
+  border-radius: 50%;
+  animation: chase-dot var(--speed, 0.8s) infinite ease-in-out both;
+}
+
+.chase-dot:nth-child(1) {
+  animation-delay: -0.32s;
+}
+.chase-dot:nth-child(2) {
+  animation-delay: -0.16s;
+}
+.chase-dot:nth-child(3) {
+  animation-delay: 0s;
+}
+.chase-dot:nth-child(4) {
+  animation-delay: 0.16s;
+}
+.chase-dot:nth-child(5) {
+  animation-delay: 0.32s;
+}
+.chase-dot:nth-child(6) {
+  animation-delay: 0.48s;
+}
+
+/* Bounce Spinner */
+.spinner-bounce {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+}
+
+.bounce-dot {
+  width: 25%;
+  height: 25%;
+  border-radius: 50%;
+  animation: bounce var(--speed, 0.8s) infinite ease-in-out both;
+}
+
+.bounce-dot:nth-child(1) {
+  animation-delay: -0.32s;
+}
+.bounce-dot:nth-child(2) {
+  animation-delay: -0.16s;
+}
+
+/* Wave Spinner */
+.spinner-wave {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2px;
+}
+
+.wave-bar {
+  width: 15%;
+  height: 100%;
+  animation: wave var(--speed, 0.8s) infinite ease-in-out;
+}
+
+.wave-bar:nth-child(1) {
+  animation-delay: -0.4s;
+}
+.wave-bar:nth-child(2) {
+  animation-delay: -0.3s;
+}
+.wave-bar:nth-child(3) {
+  animation-delay: -0.2s;
+}
+.wave-bar:nth-child(4) {
+  animation-delay: -0.1s;
+}
+
+/* Pulse Spinner */
+.spinner-pulse {
+  animation: pulse-ring var(--speed, 0.8s) cubic-bezier(0.5, 0, 0.5, 1) infinite;
+}
+
+.pulse-circle {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  opacity: 0.6;
+  animation: pulse-dot var(--speed, 0.8s) cubic-bezier(0.5, 0, 0.5, 1) infinite;
+}
+
+/* Animations */
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes chase {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes chase-dot {
+  0%,
+  100% {
+    transform: scale(0.3);
+  }
+  50% {
+    transform: scale(1);
+  }
+}
+
+@keyframes bounce {
+  0%,
+  100% {
+    transform: scale(0.3);
+  }
+  50% {
+    transform: scale(1);
+  }
+}
+
+@keyframes wave {
+  0%,
+  40%,
+  100% {
+    transform: scaleY(0.4);
+  }
+  20% {
+    transform: scaleY(1);
+  }
+}
+
+@keyframes pulse-ring {
+  0% {
+    transform: scale(0.7);
+  }
+  50%,
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes pulse-dot {
+  0% {
+    transform: scale(0.8);
+    opacity: 0.3;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 0.6;
+  }
+  100% {
+    transform: scale(0.8);
+    opacity: 0.3;
+  }
+}

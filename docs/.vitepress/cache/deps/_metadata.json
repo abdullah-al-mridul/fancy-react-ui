@@ -1,0 +1,49 @@
+{
+  "hash": "14eec47d",
+  "configHash": "389f608a",
+  "lockfileHash": "417ee52f",
+  "browserHash": "bd07ec85",
+  "optimized": {
+    "vue": {
+      "src": "../../../../node_modules/vue/dist/vue.runtime.esm-bundler.js",
+      "file": "vue.js",
+      "fileHash": "a4e4a630",
+      "needsInterop": false
+    },
+    "vitepress > @vue/devtools-api": {
+      "src": "../../../../node_modules/@vue/devtools-api/dist/index.js",
+      "file": "vitepress___@vue_devtools-api.js",
+      "fileHash": "685a9823",
+      "needsInterop": false
+    },
+    "vitepress > @vueuse/core": {
+      "src": "../../../../node_modules/@vueuse/core/index.mjs",
+      "file": "vitepress___@vueuse_core.js",
+      "fileHash": "1b525f01",
+      "needsInterop": false
+    },
+    "react": {
+      "src": "../../../../node_modules/react/index.js",
+      "file": "react.js",
+      "fileHash": "a9c18d65",
+      "needsInterop": true
+    },
+    "react-dom/client": {
+      "src": "../../../../node_modules/react-dom/client.js",
+      "file": "react-dom_client.js",
+      "fileHash": "ee598060",
+      "needsInterop": true
+    }
+  },
+  "chunks": {
+    "chunk-PLDJXV3L": {
+      "file": "chunk-PLDJXV3L.js"
+    },
+    "chunk-LW4I4DCF": {
+      "file": "chunk-LW4I4DCF.js"
+    },
+    "chunk-BUSYA2B4": {
+      "file": "chunk-BUSYA2B4.js"
+    }
+  }
+}
