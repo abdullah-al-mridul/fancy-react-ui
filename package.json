@@ -48,6 +48,7 @@
     "style-loader": "^4.0.0",
     "ts-loader": "^9.5.2",
     "typescript": "^5.7.3",
+    "vite-plugin-copy": "^0.1.6",
     "vite-plugin-css": "^1.0.4",
     "vitepress": "^1.6.0",
     "webpack": "^5.97.1",
