@@ -96,7 +96,7 @@ Fancy ReactUI is a comprehensive React component library that combines beautiful
 
 ## Getting Started
 
-Check out our [Quick Start](/guide/quickstart) guide to begin using Fancy ReactUI in your project.
+Check out our [Quick Start](/getting-started/quickstart) guide to begin using Fancy ReactUI in your project.
 
 <!-- ## Contributing
 

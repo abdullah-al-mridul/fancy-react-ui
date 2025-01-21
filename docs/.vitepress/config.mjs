@@ -247,4 +247,7 @@ export default defineConfig({
       // },
     ],
   },
+  sitemap: {
+    hostname: "https://fancy-react-ui.vercel.app",
+  },
 });

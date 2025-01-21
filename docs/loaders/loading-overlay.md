@@ -115,4 +115,4 @@ Address potential issues developers might encounter, like:
 Explore similar components within the same library or ecosystem to find the best fit for your use case:
 
 - [Spinner Components](/loaders/explore-loaders.html): Individual spinner options
-- [Progress](/loaders/progress.html): Progress indicator component
+<!-- - [Progress](/loaders/progress.html): Progress indicator component -->

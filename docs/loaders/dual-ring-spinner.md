@@ -120,4 +120,3 @@ Address potential issues developers might encounter, like:
 Explore similar components within the same library or ecosystem to find the best fit for your use case:
 
 - [Rotating Spinner](/loaders/rotating-spinner.html): A multi-ring animation
-- [Ring Spinner](/loaders/ring-spinner.html): A single ring animation
