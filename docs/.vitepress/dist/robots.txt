@@ -1,0 +1,23 @@
+# https://fancy-react-ui.vercel.app robots.txt
+
+User-agent: *
+Allow: /
+
+# Sitemaps
+Sitemap: https://fancy-react-ui.vercel.app/sitemap.xml
+
+# Common crawl directories
+Allow: /getting-started/
+Allow: /ui-components/
+Allow: /loaders/
+Allow: /assets/
+
+# Prevent crawling of potential development/test paths
+Disallow: /test/
+Disallow: /dev/
+Disallow: /draft/
+Disallow: /.vitepress/
+Disallow: /node_modules/
+
+# Rate limiting
+Crawl-delay: 10 
