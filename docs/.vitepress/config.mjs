@@ -1,12 +1,21 @@
 import { defineConfig } from "vitepress";
-import ReactWrapper from "../../src/vitepressWrapper/ReactWrapper.jsx";
-import ChaseWrapper from "../../src/vitepressWrapper/ChaseWrapper.jsx";
-import BounceWrapper from "../../src/vitepressWrapper/BounceWrapper.jsx";
-import PixelWrapper from "../../src/vitepressWrapper/PixelWrapper.jsx";
-import PulseWrapper from "../../src/vitepressWrapper/PulseWrapper.jsx";
-import RingWrapper from "../../src/vitepressWrapper/RingWrapper.jsx";
-import GridWrapper from "../../src/vitepressWrapper/GridWrapper.jsx";
-import WaveWrapper from "../../src/vitepressWrapper/WaveWrapper.jsx";
+// import ReactWrapper from "../../src/vitepressWrapper/ReactWrapper.jsx";
+// import ChaseWrapper from "../../src/vitepressWrapper/ChaseWrapper.jsx";
+// import BounceWrapper from "../../src/vitepressWrapper/BounceWrapper.jsx";
+// import PixelWrapper from "../../src/vitepressWrapper/PixelWrapper.jsx";
+// import PulseWrapper from "../../src/vitepressWrapper/PulseWrapper.jsx";
+// import RingWrapper from "../../src/vitepressWrapper/RingWrapper.jsx";
+// import GridWrapper from "../../src/vitepressWrapper/GridWrapper.jsx";
+// import WaveWrapper from "../../src/vitepressWrapper/WaveWrapper.jsx";
+// import TextWrapper from "../../src/vitepressWrapper/TextWrapper.jsx";
+// import ClockWrapper from "../../src/vitepressWrapper/ClockWrapper.jsx";
+// import TypingWrapper from "../../src/vitepressWrapper/TypingWrapper.jsx";
+// import CubeWrapper from "../../src/vitepressWrapper/CubeWrapper.jsx";
+// import RotatingWrapper from "../../src/vitepressWrapper/RotatingWrapper.jsx";
+// import DualRingWrapper from "../../src/vitepressWrapper/DualRingWrapper.jsx";
+// import HeartbeatWrapper from "../../src/vitepressWrapper/HeartbeatWrapper.jsx";
+// import GlitchWrapper from "../../src/vitepressWrapper/GlitchWrapper.jsx";
+// import LoadingOverlayWrapper from "../../src/vitepressWrapper/LoadingOverlayWrapper.jsx";
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   title: "Fancy ReactUI",
@@ -22,41 +31,119 @@ export default defineConfig({
     // https://vitepress.dev/reference/default-theme-config
     nav: [
       { text: "Home", link: "/" },
-      { text: "Examples", link: "/markdown-examples" },
+      { text: "Guide", link: "/getting-started/quickstart" },
+      { text: "Developer", link: "https://abdullah-al-mridul-dev.vercel.app/" },
       {
-        text: "Loaders",
+        text: "UI Components",
         items: [
           {
-            text: "Border Spinner",
-            link: "/explore-loaders",
+            text: "Buttons",
+            link: "/ui-components/buttons",
           },
           {
-            text: "Chase Spinner",
-            link: "/chase-spinner",
+            text: "Cards",
+            link: "/ui-components/cards",
           },
           {
-            text: "Bounce Spinner",
-            link: "/bounce-spinner",
+            text: "Forms",
+            link: "/ui-components/forms",
           },
           {
-            text: "Pixel Spinner",
-            link: "/pixel-spinner",
+            text: "Modals",
+            link: "/ui-components/modals",
           },
           {
-            text: "Ring Spinner",
-            link: "/ring-spinner",
+            text: "Tables",
+            link: "/ui-components/tables",
           },
           {
-            text: "Pulse Spinner",
-            link: "/pulse-spinner",
+            text: "Progress",
+            link: "/ui-components/progress",
+          },
+        ],
+      },
+      {
+        text: "Loader Components",
+        items: [
+          {
+            text: "Border",
+            link: "/loaders/explore-loaders",
           },
           {
-            text: "Grid Spinner",
-            link: "/grid-spinner",
+            text: "Chase",
+            link: "/loaders/chase-spinner",
           },
           {
-            text: "Wave Spinner",
-            link: "/wave-spinner",
+            text: "Bounce",
+            link: "/loaders/bounce-spinner",
+          },
+          {
+            text: "Pixel",
+            link: "/loaders/pixel-spinner",
+          },
+          // {
+          //   text: "Ring",
+          //   link: "/loaders/ring-spinner",
+          // },
+          {
+            text: "Pulse",
+            link: "/loaders/pulse-spinner",
+          },
+          {
+            text: "Grid",
+            link: "/loaders/grid-spinner",
+          },
+          {
+            text: "Wave",
+            link: "/loaders/wave-spinner",
+          },
+          {
+            text: "Text",
+            link: "/loaders/text-spinner",
+          },
+          {
+            text: "Clock",
+            link: "/loaders/clock-spinner",
+          },
+          {
+            text: "Typing",
+            link: "/loaders/typing-spinner",
+          },
+          {
+            text: "Cube",
+            link: "/loaders/cube-spinner",
+          },
+          {
+            text: "Rotating",
+            link: "/loaders/rotating-spinner",
+          },
+          {
+            text: "Dual Ring",
+            link: "/loaders/dual-ring-spinner",
+          },
+          {
+            text: "Heartbeat",
+            link: "/loaders/heartbeat-spinner",
+          },
+          {
+            text: "Glitch",
+            link: "/loaders/glitch-spinner",
+          },
+          {
+            text: "Loading",
+            link: "/loaders/loading-overlay",
+          },
+          {
+            text: "Pacman",
+            link: "/loaders/pacman-spinner",
+          },
+          // {
+          //   text: "Progress",
+          //   link: "/loaders/progress",
+          // },
+          {
+            text: "Ripple",
+            link: "/loaders/ripple-spinner",
           },
         ],
       },
@@ -64,20 +151,58 @@ export default defineConfig({
     logo: "/logo.png",
     sidebar: [
       {
-        text: "Explore Loaders",
+        text: "Getting Started",
+        collapsible: true,
+        collapsed: false,
         items: [
-          { text: "Border Spinner", link: "/explore-loaders" },
-          { text: "Chase Spinner", link: "/chase-spinner" },
-          { text: "Bounce Spinner", link: "/bounce-spinner" },
-          { text: "Pixel Spinner", link: "/pixel-spinner" },
-          { text: "Ring Spinner", link: "/ring-spinner" },
-          { text: "Pulse Spinner", link: "/pulse-spinner" },
-          { text: "Grid Spinner", link: "/grid-spinner" },
-          { text: "Wave Spinner", link: "/wave-spinner" },
+          { text: "Introduction", link: "/getting-started/introduction" },
+          { text: "Installation", link: "/getting-started/installation" },
+          { text: "Quick Start", link: "/getting-started/quickstart" },
+        ],
+      },
+      {
+        text: "UI Components",
+        collapsible: true,
+        collapsed: false,
+        items: [
+          { text: "Buttons", link: "/ui-components/buttons" },
+          { text: "Cards", link: "/ui-components/cards" },
+          { text: "Forms", link: "/ui-components/forms" },
+          { text: "Modals", link: "/ui-components/modals" },
+          { text: "Tables", link: "/ui-components/tables" },
+        ],
+      },
+      {
+        text: "Loader Components",
+        collapsible: true,
+        collapsed: false,
+        items: [
+          { text: "Border", link: "/loaders/explore-loaders" },
+          { text: "Chase", link: "/loaders/chase-spinner" },
+          { text: "Bounce", link: "/loaders/bounce-spinner" },
+          { text: "Pixel", link: "/loaders/pixel-spinner" },
+          // { text: "Ring", link: "/loaders/ring-spinner" },
+          { text: "Pulse", link: "/loaders/pulse-spinner" },
+          { text: "Grid", link: "/loaders/grid-spinner" },
+          { text: "Wave", link: "/loaders/wave-spinner" },
+          { text: "Text", link: "/loaders/text-spinner" },
+          { text: "Clock", link: "/loaders/clock-spinner" },
+          { text: "Typing", link: "/loaders/typing-spinner" },
+          { text: "Cube", link: "/loaders/cube-spinner" },
+          { text: "Rotating", link: "/loaders/rotating-spinner" },
+          { text: "Dual Ring", link: "/loaders/dual-ring-spinner" },
+          { text: "Heartbeat", link: "/loaders/heartbeat-spinner" },
+          { text: "Glitch", link: "/loaders/glitch-spinner" },
+          { text: "Loading Overlay", link: "/loaders/loading-overlay" },
+          { text: "Pacman", link: "/loaders/pacman-spinner" },
+          {
+            text: "Progress",
+            link: "/loaders/progress",
+          },
+          { text: "Ripple", link: "/loaders/ripple-spinner" },
         ],
       },
     ],
-
     socialLinks: [
       {
         icon: "facebook",
@@ -95,22 +220,31 @@ export default defineConfig({
   },
   vite: {
     plugins: [
-      {
-        name: "vitepress-react-wrapper",
-        transform(code, id) {
-          if (id.endsWith(".md")) {
-            return code
-              .replace("<ReactWrapper />", ReactWrapper)
-              .replace("<ChaseWrapper />", ChaseWrapper)
-              .replace("<BounceWrapper />", BounceWrapper)
-              .replace("<PixelWrapper />", PixelWrapper)
-              .replace("<RingWrapper />", RingWrapper)
-              .replace("<PulseWrapper />", PulseWrapper)
-              .replace("<GridWrapper />", GridWrapper)
-              .replace("<WaveWrapper />", WaveWrapper);
-          }
-        },
-      },
+      // {
+      //   name: "vitepress-react-wrapper",
+      //   transform(code, id) {
+      //     if (id.endsWith(".md")) {
+      //       return code
+      //         .replace("<ReactWrapper />", ReactWrapper)
+      //         .replace("<ChaseWrapper />", ChaseWrapper)
+      //         .replace("<BounceWrapper />", BounceWrapper)
+      //         .replace("<PixelWrapper />", PixelWrapper)
+      //         .replace("<RingWrapper />", RingWrapper)
+      //         .replace("<PulseWrapper />", PulseWrapper)
+      //         .replace("<GridWrapper />", GridWrapper)
+      //         .replace("<WaveWrapper />", WaveWrapper)
+      //         .replace("<TextWrapper />", TextWrapper)
+      //         .replace("<ClockWrapper />", ClockWrapper)
+      //         .replace("<TypingWrapper />", TypingWrapper)
+      //         .replace("<CubeWrapper />", CubeWrapper)
+      //         .replace("<RotatingWrapper />", RotatingWrapper)
+      //         .replace("<DualRingWrapper />", DualRingWrapper)
+      //         .replace("<HeartbeatWrapper />", HeartbeatWrapper)
+      //         .replace("<GlitchWrapper />", GlitchWrapper)
+      //         .replace("<LoadingOverlayWrapper />", LoadingOverlayWrapper);
+      //     }
+      //   },
+      // },
     ],
   },
 });

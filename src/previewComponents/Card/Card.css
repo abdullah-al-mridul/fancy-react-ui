@@ -1,0 +1,124 @@
+.fancy-card {
+  background: var(--card-bg, #ffffff);
+  border-radius: 8px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  position: relative;
+  border: 1px solid transparent;
+}
+
+/* Variants */
+.fancy-card.default {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+}
+
+.fancy-card.elevated {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.fancy-card.outlined {
+  border-color: var(--card-border-color, rgba(0, 0, 0, 0.12));
+  box-shadow: none;
+}
+
+.fancy-card.filled {
+  background: var(--card-filled-bg, #f5f5f5);
+  box-shadow: none;
+}
+
+/* Hover states for variants */
+.fancy-card.default.hoverable:hover {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.fancy-card.elevated.hoverable:hover {
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.fancy-card.outlined.hoverable:hover {
+  border-color: var(--card-hover-border-color, rgba(0, 0, 0, 0.2));
+}
+
+.fancy-card.filled.hoverable:hover {
+  background: var(--card-filled-hover-bg, #ececec);
+}
+
+/* Card Cover */
+.card-cover {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.card-cover img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Card Content */
+.card-content {
+  padding: 16px;
+}
+
+/* Card Header */
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 12px;
+}
+
+.card-titles {
+  flex: 1;
+}
+
+.card-title {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--card-title-color, #1f2937);
+  margin: 0;
+  line-height: 1.4;
+}
+
+.card-subtitle {
+  font-size: 14px;
+  color: var(--card-subtitle-color, #6b7280);
+  margin-top: 4px;
+  line-height: 1.4;
+}
+
+.card-extra {
+  margin-left: 16px;
+}
+
+/* Card Body */
+.card-body {
+  color: var(--card-text-color, #374151);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* Card Actions */
+.card-actions {
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  padding: 12px 16px;
+  margin: 16px -16px -16px;
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+}
+
+/* Dark mode adjustments */
+:root[class~="dark"] .fancy-card {
+  --card-bg: #1f2937;
+  --card-filled-bg: #374151;
+  --card-border-color: rgba(255, 255, 255, 0.12);
+  --card-hover-border-color: rgba(255, 255, 255, 0.2);
+  --card-filled-hover-bg: #2d3748;
+  --card-title-color: #f3f4f6;
+  --card-subtitle-color: #9ca3af;
+  --card-text-color: #d1d5db;
+}

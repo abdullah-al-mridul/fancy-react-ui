@@ -1,5 +1,5 @@
 import React from "react";
-// import "./ChaseSpinner.css";
+import "./ChaseSpinner.css";
 import { ChaseSpinnerProps } from "./types";
 
 /**

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./LoadingOverlay.css";
 import { LoadingOverlayProps } from "./types";
 import * as Spinners from "../../index";
@@ -34,7 +34,8 @@ const LoadingOverlay: React.FC<LoadingOverlayProps> = ({
   containerStyle,
   className = "",
 }) => {
-  if (!active) return null;
+  const [componentActive, setComponentActive] = useState(active);
+  if (!componentActive) return null;
 
   const SpinnerComponent = Spinners[spinnerProps.type as keyof typeof Spinners];
   const { type, ...restSpinnerProps } = spinnerProps;
@@ -55,6 +56,18 @@ const LoadingOverlay: React.FC<LoadingOverlayProps> = ({
           </div>
         )}
       </div>
+      <button
+      style={
+        {
+          marginLeft:50
+        }
+      }
+        onClick={() => {
+          setComponentActive(false);
+        }}
+      >
+        Close
+      </button>
     </div>
   );
 };

@@ -1,5 +1,5 @@
 import React from "react";
-// import "./DualRingSpinner.css";
+import "./DualRingSpinner.css";
 import { DualRingSpinnerProps } from "./types";
 
 /**

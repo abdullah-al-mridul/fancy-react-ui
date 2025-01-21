@@ -1,5 +1,5 @@
 import React from "react";
-// import "./PixelSpinner.css";
+import "./PixelSpinner.css";
 import { PixelSpinnerProps } from "./types";
 
 /**

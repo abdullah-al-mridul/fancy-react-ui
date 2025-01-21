@@ -1,5 +1,5 @@
 import React from "react";
-// import "./PulseSpinner.css";
+import "./PulseSpinner.css";
 import { PulseSpinnerProps } from "./types";
 
 /**

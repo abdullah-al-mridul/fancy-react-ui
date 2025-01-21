@@ -48,7 +48,7 @@ const LoadingOverlay: React.FC<LoadingOverlayProps> = ({
       }}
     >
       <div className="loading-content">
-        <SpinnerComponent {...restSpinnerProps} />
+        {/* <SpinnerComponent {...restSpinnerProps} /> */}
         {text && (
           <div className="loading-text" style={textStyle}>
             {text}

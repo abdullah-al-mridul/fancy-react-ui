@@ -1,5 +1,5 @@
 import React from "react";
-// import "./BounceSpinner.css";
+import "./BounceSpinner.css";
 import { BounceSpinnerProps } from "./types";
 
 /**

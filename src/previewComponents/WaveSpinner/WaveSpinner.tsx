@@ -1,5 +1,5 @@
 import React from "react";
-// import "./WaveSpinner.css";
+import "./WaveSpinner.css";
 import { WaveSpinnerProps } from "./types";
 
 /**

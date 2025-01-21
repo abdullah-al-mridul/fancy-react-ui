@@ -1,5 +1,5 @@
 import React from "react";
-// import "./BorderSpinner.css";
+import "./BorderSpinner.css";
 import { BorderSpinnerProps } from "./types";
 
 /**

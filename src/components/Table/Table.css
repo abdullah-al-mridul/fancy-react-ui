@@ -1,0 +1,191 @@
+.fancy-table-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.table-container {
+  overflow-x: auto;
+}
+
+.fancy-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--table-bg, #ffffff);
+}
+
+.table-cell {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--table-border-color, rgba(0, 0, 0, 0.1));
+}
+
+/* Header styles */
+.fancy-table thead th {
+  background: var(--table-header-bg, #f9fafb);
+  font-weight: 600;
+  color: var(--table-header-color, #111827);
+  text-align: left;
+  white-space: nowrap;
+}
+
+.sortable {
+  cursor: pointer;
+  user-select: none;
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.sort-icon {
+  font-size: 12px;
+  opacity: 0.5;
+}
+
+.sort-icon.asc {
+  opacity: 1;
+  transform: rotate(180deg);
+}
+
+.sort-icon.desc {
+  opacity: 1;
+}
+
+/* Cell alignment */
+.align-left {
+  text-align: left;
+}
+
+.align-center {
+  text-align: center;
+}
+
+.align-right {
+  text-align: right;
+}
+
+/* Fixed columns */
+.fixed-left {
+  position: sticky;
+  left: 0;
+  z-index: 1;
+  background: inherit;
+}
+
+.fixed-right {
+  position: sticky;
+  right: 0;
+  z-index: 1;
+  background: inherit;
+}
+
+/* Row styles */
+.fancy-table tbody tr {
+  transition: background-color 0.2s ease;
+}
+
+.fancy-table tbody tr:hover {
+  background-color: var(--table-hover-bg, rgba(0, 0, 0, 0.02));
+}
+
+/* Striped rows */
+.striped tbody tr:nth-child(even) {
+  background-color: var(--table-stripe-bg, rgba(0, 0, 0, 0.02));
+}
+
+/* Bordered variant */
+.bordered .fancy-table {
+  border: 1px solid var(--table-border-color, rgba(0, 0, 0, 0.1));
+}
+
+.bordered .table-cell {
+  border: 1px solid var(--table-border-color, rgba(0, 0, 0, 0.1));
+}
+
+/* Sizes */
+.small .table-cell {
+  padding: 8px 12px;
+  font-size: 14px;
+}
+
+.large .table-cell {
+  padding: 16px 24px;
+  font-size: 16px;
+}
+
+/* Empty state */
+.empty-cell {
+  text-align: center;
+  padding: 32px;
+  color: var(--table-empty-color, #6b7280);
+}
+
+/* Loading state */
+.table-loading-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loading-spinner {
+  width: 24px;
+  height: 24px;
+  border: 2px solid var(--table-spinner-color, #3b82f6);
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+/* Pagination */
+.table-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+  padding: 12px 16px;
+  border-top: 1px solid var(--table-border-color, rgba(0, 0, 0, 0.1));
+}
+
+.table-pagination button {
+  padding: 6px 12px;
+  border: 1px solid var(--table-border-color, rgba(0, 0, 0, 0.1));
+  background: var(--table-pagination-bg, #ffffff);
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.table-pagination button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.page-info {
+  color: var(--table-text-color, #374151);
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Dark mode */
+:root[class~="dark"] {
+  --table-bg: #1f2937;
+  --table-header-bg: #111827;
+  --table-header-color: #f9fafb;
+  --table-border-color: rgba(255, 255, 255, 0.1);
+  --table-hover-bg: rgba(255, 255, 255, 0.05);
+  --table-stripe-bg: rgba(255, 255, 255, 0.02);
+  --table-empty-color: #9ca3af;
+  --table-text-color: #d1d5db;
+  --table-spinner-color: #60a5fa;
+  --table-pagination-bg: #1f2937;
+}

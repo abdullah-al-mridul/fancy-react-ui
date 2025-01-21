@@ -15,12 +15,18 @@ import {
   RippleSpinner,
   GridSpinner,
   DualRingSpinner,
-  LoadingOverlay,
   PacmanSpinner,
   TypingSpinner,
   CubeSpinner,
   GlitchSpinner,
   PixelSpinner,
+  Button,
+  LoadingOverlay,
+  Card,
+  Form,
+  Input,
+  Modal,
+  Table,
 } from "../src";
 
 const App = () => {
@@ -182,6 +188,7 @@ const App = () => {
         <Progress
           value={60}
           color="#FFC107"
+          backgroundColor="#000000"
           height={12}
           showPercentage
           textPosition="center"
@@ -235,17 +242,7 @@ const App = () => {
         }}
       >
         {/* Container-specific overlay */}
-        <LoadingOverlay
-          active={true}
-          spinnerProps={{
-            type: "WaveSpinner",
-            size: 40,
-            color: "#fff",
-          }}
-          text="Loading content..."
-          overlayColor="rgba(33, 150, 243, 0.8)"
-          containerStyle={{ position: "absolute" }}
-        />
+
         <div style={{ height: "200px" }}>Content here...</div>
       </div>
 
@@ -261,6 +258,48 @@ const App = () => {
         text="Please wait..."
         textStyle={{ fontSize: "1.2rem", color: "#fff", fontWeight: "bold" }}
         overlayColor="rgba(0, 0, 0, 0.8)"
+      /> */}
+      <h1>UI Components</h1>
+      <Button variant="outline" size="large" loading>
+        Click Me
+      </Button>
+      <Card
+        title="Card Title"
+        subtitle="Card Subtitle"
+        variant="outlined"
+        hoverable={true}
+        bordered={true}
+        className=""
+        style={{}}
+        actions={<Button>Action</Button>}
+        extra={<Button>Extra</Button>}
+      >
+        This is the content of the card.
+      </Card>
+      <Form onSubmit={(value) => console.log(value)}>
+        <Input
+          type="text"
+          placeholder="Enter your name"
+          name="name"
+          label="Name"
+          rules={{ required: true, minLength: 3 }}
+        />
+        <Input
+          type="email"
+          name="email"
+          label="Email"
+          rules={{ required: true }}
+        />
+        <Button type="submit">Submit</Button>
+      </Form>
+      <Modal isOpen={true} onClose={() => {}}>
+        <h1>Hello</h1>
+      </Modal>
+      {/* <Table
+        data={[]}
+        columns={[]}
+        pagination={{ pageSize: 10 }}
+        loading={false}
       /> */}
     </div>
   );

@@ -11,7 +11,7 @@ This page demonstrates the `BorderSpinner` component. The spinner can be used as
 To render the `BorderSpinner`, simply include it in your JSX as shown below:
 
 ```jsx
-import { BorderSpinner } from "fancy-loader-react";
+import { BorderSpinner } from "fancy-react-ui";
 
 function App() {
   return (
@@ -82,4 +82,4 @@ Address potential issues developers might encounter, like:
 
 Explore similar components within the same library or ecosystem to find the best fit for your use case:
 
-- [Chase Spinner](/chase-spinner.html): A dynamic spinner with a unique chasing dots animation.
+- [Chase Spinner](/loaders/chase-spinner): A dynamic spinner with a unique chasing dots animation.

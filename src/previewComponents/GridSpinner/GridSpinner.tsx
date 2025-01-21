@@ -1,5 +1,5 @@
 import React from "react";
-// import "./GridSpinner.css";
+import "./GridSpinner.css";
 import { GridSpinnerProps } from "./types";
 
 /**

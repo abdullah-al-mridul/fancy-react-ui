@@ -1,0 +1,58 @@
+.fancy-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.form-label {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--form-label-color, #374151);
+}
+
+.form-label .required {
+  color: var(--form-error-color, #dc2626);
+  margin-left: 4px;
+}
+
+.form-input {
+  padding: 8px 12px;
+  border: 1px solid var(--form-border-color, #d1d5db);
+  border-radius: 6px;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--form-text-color, #1f2937);
+  background: var(--form-bg, #ffffff);
+  transition: all 0.2s ease;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: var(--form-focus-color, #3b82f6);
+  box-shadow: 0 0 0 3px var(--form-focus-ring, rgba(59, 130, 246, 0.1));
+}
+
+.form-input.error {
+  border-color: var(--form-error-color, #dc2626);
+}
+
+.form-error {
+  font-size: 12px;
+  color: var(--form-error-color, #dc2626);
+}
+
+/* Dark mode */
+:root[class~="dark"] {
+  --form-bg: #1f2937;
+  --form-border-color: #4b5563;
+  --form-text-color: #f3f4f6;
+  --form-label-color: #d1d5db;
+  --form-focus-color: #60a5fa;
+  --form-error-color: #ef4444;
+}
