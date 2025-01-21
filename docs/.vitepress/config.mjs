@@ -22,6 +22,85 @@ export default defineConfig({
   head: [
     ["link", { rel: "icon", href: "/logo.png" }],
     ["meta", { name: "theme-color", content: "#5B85AF" }],
+    [
+      "meta",
+      {
+        name: "description",
+        content: "A react component library for UI components",
+      },
+    ],
+    [
+      "meta",
+      {
+        name: "google-site-verification",
+        content: "Tb8XPvHHAsnp2a5SuwrH5cbJdZLVwvcFa4_rn_IBveI",
+      },
+    ],
+    [
+      "meta",
+      {
+        property: "og:title",
+        content: "Fancy ReactUI - Modern React Component Library",
+      },
+    ],
+    [
+      "meta",
+      {
+        property: "og:description",
+        content:
+          "Beautiful, customizable, and production-ready React UI components and loaders",
+      },
+    ],
+    [
+      "meta",
+      {
+        property: "og:image",
+        content: "https://fancy-react-ui.vercel.app/og-image.png",
+      },
+    ],
+    [
+      "meta",
+      {
+        property: "og:url",
+        content: "https://fancy-react-ui.vercel.app",
+      },
+    ],
+    [
+      "meta",
+      {
+        property: "og:type",
+        content: "website",
+      },
+    ],
+    [
+      "meta",
+      {
+        name: "twitter:card",
+        content: "summary_large_image",
+      },
+    ],
+    [
+      "meta",
+      {
+        name: "twitter:title",
+        content: "Fancy ReactUI - Modern React Component Library",
+      },
+    ],
+    [
+      "meta",
+      {
+        name: "twitter:description",
+        content:
+          "Beautiful, customizable, and production-ready React UI components and loaders",
+      },
+    ],
+    [
+      "meta",
+      {
+        name: "twitter:image",
+        content: "https://fancy-react-ui.vercel.app/og-image.png",
+      },
+    ],
   ],
   description: "A react component library for UI components",
   themeConfig: {
