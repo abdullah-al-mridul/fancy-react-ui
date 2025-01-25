@@ -22,6 +22,9 @@
     "node_modules",
     "dist",
     "src/previewComponents",
-    "src/vitepressWrapper"
+    "src/vitepressWrapper",
+    "src/sandbox",
+    "src/stories",
+    "src/previousComponents"
   ]
 }
