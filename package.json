@@ -1,6 +1,6 @@
 {
   "name": "fancy-react-ui",
-  "version": "1.0.9",
+  "version": "1.1.0",
   "main": "dist/index.js",
   "types": "dist/types/index.d.ts",
   "scripts": {
@@ -9,7 +9,9 @@
     "build": "webpack",
     "docs:dev": "vitepress dev docs",
     "docs:build": "vitepress build docs",
-    "docs:preview": "vitepress preview docs"
+    "docs:preview": "vitepress preview docs",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
   },
   "files": [
     "dist"
@@ -31,6 +33,7 @@
   "license": "ISC",
   "description": "A react component library for UI components",
   "dependencies": {
+    "@storybook/react-docgen-typescript-plugin": "^1.0.1",
     "@vitejs/plugin-react": "^4.3.4",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
@@ -40,11 +43,21 @@
     "@babel/preset-react": "^7.26.3",
     "@rollup/plugin-commonjs": "^28.0.2",
     "@rollup/plugin-node-resolve": "^16.0.0",
+    "@storybook/addon-essentials": "^8.5.1",
+    "@storybook/addon-interactions": "^8.5.1",
+    "@storybook/addon-onboarding": "^8.5.1",
+    "@storybook/addon-webpack5-compiler-swc": "2.0.0",
+    "@storybook/blocks": "^8.5.1",
+    "@storybook/react": "^8.5.1",
+    "@storybook/react-vite": "^8.5.1",
+    "@storybook/react-webpack5": "8.5.1",
+    "@storybook/test": "^8.5.1",
     "@types/react": "^19.0.7",
     "@types/react-dom": "^19.0.3",
     "babel-loader": "^9.2.1",
     "css-loader": "^7.1.2",
     "rollup": "^4.31.0",
+    "storybook": "^8.5.1",
     "style-loader": "^4.0.0",
     "ts-loader": "^9.5.2",
     "typescript": "^5.7.3",

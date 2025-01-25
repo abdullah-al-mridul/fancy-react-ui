@@ -1,20 +1,24 @@
 import { ButtonHTMLAttributes } from "react";
 
+export type ButtonVariant =
+  | "default"
+  | "primary"
+  | "secondary"
+  | "success"
+  | "warning"
+  | "error";
+
+export type ButtonVariantType = "solid" | "outline" | "link";
+
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  /**
-   * Button variant/style
-   */
-  variant?: "primary" | "secondary" | "outline" | "text";
-  /**
-   * Button size
-   */
-  size?: "small" | "medium" | "large";
-  /**
-   * Loading state
-   */
-  loading?: boolean;
-  /**
-   * Full width button
-   */
-  fullWidth?: boolean;
+  text: string;
+  size?: "small" | "medium" | "large" | number;
+  weight?: "normal" | "medium" | "semibold" | "bold";
+  variant?: ButtonVariant;
+  variantType?: ButtonVariantType;
+  isLoading?: boolean;
+  disableShine?: boolean;
+  disableBorder?: boolean;
+  href?: string;
+  disabled?: boolean;
 }

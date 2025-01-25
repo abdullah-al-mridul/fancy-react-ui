@@ -1,107 +1,903 @@
-.fancy-button {
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+
+._fancy_react_ui_btn {
+  font-family: "Inter", sans-serif;
+  user-select: none;
+  background: transparent;
+  color: #fff;
+  outline: none;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 10px;
+  transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1),
+    transform 200ms cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  isolation: isolate;
+  min-width: 100px;
+  min-height: 40px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-weight: 500;
-  transition: all 0.2s ease;
+  gap: 8px;
+}
+
+/* Hover effect with subtle glow */
+._fancy_react_ui_btn:hover {
+  transform: translateY(-2px);
+  background: rgba(28, 34, 43, 1);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Click effect */
+._fancy_react_ui_btn:active {
+  transform: translateY(1px) scale(0.97);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  transition: all 100ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Focus state with custom outline */
+._fancy_react_ui_btn:focus {
+  box-shadow: 0 0 0 3px rgba(45, 54, 67, 0.4);
+}
+
+/* Ripple effect on click */
+._fancy_react_ui_btn span.ripple {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  background-image: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.1) 10%,
+    transparent 10.01%
+  );
+  background-repeat: no-repeat;
+  background-position: 50%;
+  transform: scale(10, 10);
+  opacity: 0;
+  transition: transform 0.5s, opacity 0.5s;
+}
+
+._fancy_react_ui_btn:active span.ripple {
+  transform: scale(0, 0);
+  opacity: 0.3;
+  transition: 0s;
+}
+
+/* Combined shine and border effects */
+@keyframes borderChase {
+  0% {
+    clip-path: inset(0 0 95% 0);
+  }
+  25% {
+    clip-path: inset(0 0 0 95%);
+  }
+  50% {
+    clip-path: inset(95% 0 0 0);
+  }
+  75% {
+    clip-path: inset(0 95% 0 0);
+  }
+  100% {
+    clip-path: inset(0 0 95% 0);
+  }
+}
+
+@keyframes shine {
+  0% {
+    transform: translateX(-100%) skewX(-15deg);
+  }
+  100% {
+    transform: translateX(200%) skewX(-15deg);
+  }
+}
+
+._fancy_react_ui_btn::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  background: linear-gradient(90deg, #3182ce, #805ad5, #3182ce);
+  opacity: 0;
+  transition: opacity 0.2s;
+  z-index: -1;
+}
+
+._fancy_react_ui_btn::after {
+  content: "";
+  position: absolute;
+  inset: 1px;
+  background: inherit;
+  border-radius: 9px;
+  z-index: -1;
+}
+
+/* Shine effect element */
+._fancy_react_ui_btn .shine {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(255, 255, 255, 0.1),
+    transparent
+  );
+  transform: translateX(-100%) skewX(-15deg);
+  pointer-events: none;
+}
+
+/* Combine hover effects */
+._fancy_react_ui_btn:hover::before {
+  opacity: 1;
+}
+
+/* Only apply border animation if not disabled */
+._fancy_react_ui_btn:not([data-disable-border="true"]):hover::before {
+  animation: borderChase 3s linear infinite;
+}
+
+/* Only apply shine animation if not disabled */
+._fancy_react_ui_btn:not([data-disable-shine="true"]):hover .shine {
+  animation: shine 1.5s ease infinite;
+}
+
+/* Loading spinner animation */
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Loading state styles */
+._fancy_react_ui_btn[data-loading="true"] {
+  cursor: wait;
+  pointer-events: none;
   position: relative;
-  outline: none;
-  min-width: 64px;
-  overflow: hidden;
 }
 
-/* Variants */
-.fancy-button.primary {
-  background-color: #0066ff;
-  color: white;
+._fancy_react_ui_btn .spinner {
+  display: none;
+  position: absolute;
+  /* left: 50%; */
+  /* top: 50%; */
+  width: 20px;
+  height: 20px;
+  /* transform: translate(50%, 50%); */
+  border: 2px solid transparent;
+  border-radius: 50%;
+  border-top-color: #fff;
+  border-right-color: rgba(255, 255, 255, 0.3);
+  border-bottom-color: rgba(255, 255, 255, 0.3);
+  border-left-color: rgba(255, 255, 255, 0.3);
+  transform-origin: center;
+  z-index: 1;
 }
 
-.fancy-button.secondary {
-  background-color: #f5f5f5;
-  color: #333;
+._fancy_react_ui_btn[data-loading="true"] .spinner {
+  display: block;
+  animation: spin 0.8s cubic-bezier(0.5, 0.1, 0.5, 0.9) infinite;
 }
 
-.fancy-button.outline {
-  background-color: transparent;
-  border: 1px solid #0066ff;
-  color: #0066ff;
+/* Hide text when loading */
+._fancy_react_ui_btn[data-loading="true"] .button-text {
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.2s ease;
 }
 
-.fancy-button.text {
-  background-color: transparent;
-  color: #0066ff;
-  padding: 0;
-  min-width: auto;
+/* Override hover animations when loading */
+._fancy_react_ui_btn[data-loading="true"]:hover {
+  transform: none;
+  box-shadow: none;
 }
 
-/* Sizes */
-.fancy-button.small {
-  padding: 6px 12px;
+/* Apply shine and border animations when loading */
+._fancy_react_ui_btn[data-loading="true"]::before {
+  opacity: 1;
+  animation: borderChase 3s linear infinite;
+}
+
+._fancy_react_ui_btn[data-loading="true"] .shine {
+  animation: shine 1.5s ease infinite;
+}
+
+/* Disable other hover animations when loading */
+._fancy_react_ui_btn[data-loading="true"]:hover::before,
+._fancy_react_ui_btn[data-loading="true"]:hover .shine {
+  animation: none;
+}
+
+/* Disabled state */
+._fancy_react_ui_btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* Text shadow effect on hover */
+._fancy_react_ui_btn:hover {
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
+}
+
+/* Size variations with font sizes */
+._fancy_react_ui_btn[data-size="small"] {
+  padding: 8px 16px;
   font-size: 14px;
   min-height: 32px;
 }
 
-.fancy-button.medium {
-  padding: 8px 16px;
+._fancy_react_ui_btn[data-size="medium"] {
+  padding: 10px 20px;
   font-size: 16px;
   min-height: 40px;
 }
 
-.fancy-button.large {
+._fancy_react_ui_btn[data-size="large"] {
   padding: 12px 24px;
   font-size: 18px;
   min-height: 48px;
 }
 
-/* States */
-.fancy-button:hover:not(:disabled) {
-  opacity: 0.9;
+/* Font weight variations */
+._fancy_react_ui_btn[data-weight="normal"] {
+  font-weight: 400;
 }
 
-.fancy-button:active:not(:disabled) {
-  transform: scale(0.98);
+._fancy_react_ui_btn[data-weight="medium"] {
+  font-weight: 500;
 }
 
-.fancy-button:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
+._fancy_react_ui_btn[data-weight="semibold"] {
+  font-weight: 600;
 }
 
-.fancy-button.full-width {
-  width: 100%;
+._fancy_react_ui_btn[data-weight="bold"] {
+  font-weight: 700;
 }
 
-/* Loading State */
-.fancy-button.loading {
-  cursor: wait;
+/* Custom focus visible outline */
+._fancy_react_ui_btn:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(45, 54, 67, 0.4), 0 0 0 1px #0d1015;
 }
 
-.button-content {
+/* Hover scale with smooth transition */
+@media (hover: hover) {
+  ._fancy_react_ui_btn:hover {
+    transform: translateY(-2px) scale(1.02);
+  }
+
+  ._fancy_react_ui_btn:active {
+    transform: translateY(1px) scale(0.97);
+  }
+}
+
+/* Update text container for better layout */
+._fancy_react_ui_btn .button-text {
+  position: relative;
+  display: inline-block;
+  line-height: 1;
+}
+
+/* Variant styles */
+._fancy_react_ui_btn[data-variant="default"] {
+  background: #0d1015;
+  color: #fff;
+  border: 1px solid rgba(45, 54, 67, 1);
+}
+
+._fancy_react_ui_btn[data-variant="default"]:hover {
+  background: rgba(28, 34, 43, 1);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+._fancy_react_ui_btn[data-variant="default"]:active {
+  transform: translateY(1px) scale(0.97);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+._fancy_react_ui_btn[data-variant="default"]::before {
+  background: linear-gradient(90deg, #3182ce, #805ad5, #3182ce);
+}
+
+/* Primary variant styles */
+._fancy_react_ui_btn[data-variant="primary"] {
+  background: #0ea5e9;
+  color: white;
+  border: none;
+}
+
+._fancy_react_ui_btn[data-variant="primary"]:hover {
+  background: #0284c7;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(14, 165, 233, 0.25);
+}
+
+._fancy_react_ui_btn[data-variant="primary"]:active {
+  background: #0369a1;
+  transform: translateY(1px) scale(0.97);
+  box-shadow: 0 4px 12px rgba(14, 165, 233, 0.2);
+}
+
+/* Update border animation gradient for primary with more contrast */
+._fancy_react_ui_btn[data-variant="primary"]::before {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.8),
+    rgba(255, 255, 255, 0.3),
+    rgba(255, 255, 255, 0.8)
+  );
+}
+
+/* Update focus state for primary variant */
+._fancy_react_ui_btn[data-variant="primary"]:focus {
+  box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.4);
+}
+
+/* Update spinner colors for primary variant */
+._fancy_react_ui_btn[data-variant="primary"] .spinner {
+  border-top-color: #fff;
+  border-right-color: rgba(255, 255, 255, 0.4);
+  border-bottom-color: rgba(255, 255, 255, 0.4);
+  border-left-color: rgba(255, 255, 255, 0.4);
+}
+
+/* Enhance shine effect for primary */
+._fancy_react_ui_btn[data-variant="primary"] .shine {
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+}
+
+/* Secondary variant styles */
+._fancy_react_ui_btn[data-variant="secondary"] {
+  background: #475569;
+  color: white;
+  border: none;
+}
+
+._fancy_react_ui_btn[data-variant="secondary"]:hover {
+  background: #334155;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(71, 85, 105, 0.25);
+}
+
+._fancy_react_ui_btn[data-variant="secondary"]:active {
+  background: #1e293b;
+  transform: translateY(1px) scale(0.97);
+  box-shadow: 0 4px 12px rgba(71, 85, 105, 0.2);
+}
+
+/* Update border animation gradient for secondary */
+._fancy_react_ui_btn[data-variant="secondary"]::before {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.8),
+    rgba(255, 255, 255, 0.3),
+    rgba(255, 255, 255, 0.8)
+  );
+}
+
+/* Update focus state for secondary variant */
+._fancy_react_ui_btn[data-variant="secondary"]:focus {
+  box-shadow: 0 0 0 3px rgba(71, 85, 105, 0.4);
+}
+
+/* Update spinner colors for secondary variant */
+._fancy_react_ui_btn[data-variant="secondary"] .spinner {
+  border-top-color: #fff;
+  border-right-color: rgba(255, 255, 255, 0.4);
+  border-bottom-color: rgba(255, 255, 255, 0.4);
+  border-left-color: rgba(255, 255, 255, 0.4);
+}
+
+/* Enhance shine effect for secondary */
+._fancy_react_ui_btn[data-variant="secondary"] .shine {
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+}
+
+/* Success variant styles */
+._fancy_react_ui_btn[data-variant="success"] {
+  background: #10b981;
+  color: white;
+  border: none;
+}
+
+._fancy_react_ui_btn[data-variant="success"]:hover {
+  background: #059669;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(16, 185, 129, 0.25);
+}
+
+._fancy_react_ui_btn[data-variant="success"]:active {
+  background: #047857;
+  transform: translateY(1px) scale(0.97);
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.2);
+}
+
+/* Update border animation gradient for success */
+._fancy_react_ui_btn[data-variant="success"]::before {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.8),
+    rgba(255, 255, 255, 0.3),
+    rgba(255, 255, 255, 0.8)
+  );
+}
+
+/* Update focus state for success variant */
+._fancy_react_ui_btn[data-variant="success"]:focus {
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.4);
+}
+
+/* Update spinner colors for success variant */
+._fancy_react_ui_btn[data-variant="success"] .spinner {
+  border-top-color: #fff;
+  border-right-color: rgba(255, 255, 255, 0.4);
+  border-bottom-color: rgba(255, 255, 255, 0.4);
+  border-left-color: rgba(255, 255, 255, 0.4);
+}
+
+/* Enhance shine effect for success */
+._fancy_react_ui_btn[data-variant="success"] .shine {
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+}
+
+/* Warning variant styles */
+._fancy_react_ui_btn[data-variant="warning"] {
+  background: #f59e0b;
+  color: white;
+  border: none;
+}
+
+._fancy_react_ui_btn[data-variant="warning"]:hover {
+  background: #d97706;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(245, 158, 11, 0.25);
+}
+
+._fancy_react_ui_btn[data-variant="warning"]:active {
+  background: #b45309;
+  transform: translateY(1px) scale(0.97);
+  box-shadow: 0 4px 12px rgba(245, 158, 11, 0.2);
+}
+
+/* Update border animation gradient for warning */
+._fancy_react_ui_btn[data-variant="warning"]::before {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.8),
+    rgba(255, 255, 255, 0.3),
+    rgba(255, 255, 255, 0.8)
+  );
+}
+
+/* Update focus state for warning variant */
+._fancy_react_ui_btn[data-variant="warning"]:focus {
+  box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.4);
+}
+
+/* Update spinner colors for warning variant */
+._fancy_react_ui_btn[data-variant="warning"] .spinner {
+  border-top-color: #fff;
+  border-right-color: rgba(255, 255, 255, 0.4);
+  border-bottom-color: rgba(255, 255, 255, 0.4);
+  border-left-color: rgba(255, 255, 255, 0.4);
+}
+
+/* Enhance shine effect for warning */
+._fancy_react_ui_btn[data-variant="warning"] .shine {
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+}
+
+/* Error variant styles */
+._fancy_react_ui_btn[data-variant="error"] {
+  background: #ef4444;
+  color: white;
+  border: none;
+}
+
+._fancy_react_ui_btn[data-variant="error"]:hover {
+  background: #dc2626;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(239, 68, 68, 0.25);
+}
+
+._fancy_react_ui_btn[data-variant="error"]:active {
+  background: #b91c1c;
+  transform: translateY(1px) scale(0.97);
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.2);
+}
+
+/* Update border animation gradient for error */
+._fancy_react_ui_btn[data-variant="error"]::before {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.8),
+    rgba(255, 255, 255, 0.3),
+    rgba(255, 255, 255, 0.8)
+  );
+}
+
+/* Update focus state for error variant */
+._fancy_react_ui_btn[data-variant="error"]:focus {
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.4);
+}
+
+/* Update spinner colors for error variant */
+._fancy_react_ui_btn[data-variant="error"] .spinner {
+  border-top-color: #fff;
+  border-right-color: rgba(255, 255, 255, 0.4);
+  border-bottom-color: rgba(255, 255, 255, 0.4);
+  border-left-color: rgba(255, 255, 255, 0.4);
+}
+
+/* Enhance shine effect for error */
+._fancy_react_ui_btn[data-variant="error"] .shine {
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+}
+
+/* Outline variant type styles */
+._fancy_react_ui_btn[data-variant-type="outline"] {
+  background: transparent !important;
+  border-width: 2px !important;
+  border-style: solid !important;
+}
+
+._fancy_react_ui_btn[data-variant-type="outline"][data-variant="default"] {
+  color: #0d1015;
+  border-color: #0d1015;
+}
+
+._fancy_react_ui_btn[data-variant-type="outline"][data-variant="primary"] {
+  color: #0ea5e9;
+  border-color: #0ea5e9;
+}
+
+._fancy_react_ui_btn[data-variant-type="outline"][data-variant="secondary"] {
+  color: #475569;
+  border-color: #475569;
+}
+
+._fancy_react_ui_btn[data-variant-type="outline"][data-variant="success"] {
+  color: #10b981;
+  border-color: #10b981;
+}
+
+._fancy_react_ui_btn[data-variant-type="outline"][data-variant="warning"] {
+  color: #f59e0b;
+  border-color: #f59e0b;
+}
+
+._fancy_react_ui_btn[data-variant-type="outline"][data-variant="error"] {
+  color: #ef4444;
+  border-color: #ef4444;
+}
+
+/* Link variant type styles - Update */
+._fancy_react_ui_btn[data-variant-type="link"] {
+  background: transparent !important;
+  border: none !important;
+  padding: 4px 0 !important;
+  min-width: 0 !important;
+  min-height: 0 !important;
   display: inline-flex;
   align-items: center;
-  justify-content: center;
-  transition: opacity 0.2s ease;
+  gap: 4px;
+  box-shadow: none !important; /* Prevent any shadow */
 }
 
-.button-loader {
+/* Link hover effects */
+._fancy_react_ui_btn[data-variant-type="link"]:hover {
+  transform: none !important;
+  box-shadow: none !important;
+  text-shadow: none !important; /* Remove text shadow */
+  opacity: 0.8;
+}
+
+/* Link spinner colors based on variant */
+._fancy_react_ui_btn[data-variant-type="link"][data-variant="default"]
+  .spinner {
+  border-top-color: #0d1015;
+  border-right-color: rgba(13, 16, 21, 0.3);
+  border-bottom-color: rgba(13, 16, 21, 0.3);
+  border-left-color: rgba(13, 16, 21, 0.3);
+}
+
+._fancy_react_ui_btn[data-variant-type="link"][data-variant="primary"]
+  .spinner {
+  border-top-color: #0ea5e9;
+  border-right-color: rgba(14, 165, 233, 0.3);
+  border-bottom-color: rgba(14, 165, 233, 0.3);
+  border-left-color: rgba(14, 165, 233, 0.3);
+}
+
+._fancy_react_ui_btn[data-variant-type="link"][data-variant="secondary"]
+  .spinner {
+  border-top-color: #475569;
+  border-right-color: rgba(71, 85, 105, 0.3);
+  border-bottom-color: rgba(71, 85, 105, 0.3);
+  border-left-color: rgba(71, 85, 105, 0.3);
+}
+
+._fancy_react_ui_btn[data-variant-type="link"][data-variant="success"]
+  .spinner {
+  border-top-color: #10b981;
+  border-right-color: rgba(16, 185, 129, 0.3);
+  border-bottom-color: rgba(16, 185, 129, 0.3);
+  border-left-color: rgba(16, 185, 129, 0.3);
+}
+
+._fancy_react_ui_btn[data-variant-type="link"][data-variant="warning"]
+  .spinner {
+  border-top-color: #f59e0b;
+  border-right-color: rgba(245, 158, 11, 0.3);
+  border-bottom-color: rgba(245, 158, 11, 0.3);
+  border-left-color: rgba(245, 158, 11, 0.3);
+}
+
+._fancy_react_ui_btn[data-variant-type="link"][data-variant="error"] .spinner {
+  border-top-color: #ef4444;
+  border-right-color: rgba(239, 68, 68, 0.3);
+  border-bottom-color: rgba(239, 68, 68, 0.3);
+  border-left-color: rgba(239, 68, 68, 0.3);
+}
+
+/* Remove any hover effects that might cause shadows */
+._fancy_react_ui_btn[data-variant-type="link"]:hover,
+._fancy_react_ui_btn[data-variant-type="link"]:active,
+._fancy_react_ui_btn[data-variant-type="link"]:focus {
+  box-shadow: none !important;
+  text-shadow: none !important;
+}
+
+/* Link variant colors */
+._fancy_react_ui_btn[data-variant-type="link"][data-variant="default"] {
+  color: #0d1015;
+}
+
+._fancy_react_ui_btn[data-variant-type="link"][data-variant="primary"] {
+  color: #0ea5e9;
+}
+
+._fancy_react_ui_btn[data-variant-type="link"][data-variant="secondary"] {
+  color: #475569;
+}
+
+._fancy_react_ui_btn[data-variant-type="link"][data-variant="success"] {
+  color: #10b981;
+}
+
+._fancy_react_ui_btn[data-variant-type="link"][data-variant="warning"] {
+  color: #f59e0b;
+}
+
+._fancy_react_ui_btn[data-variant-type="link"][data-variant="error"] {
+  color: #ef4444;
+}
+
+/* Link loading state */
+._fancy_react_ui_btn[data-variant-type="link"][data-loading="true"] {
+  pointer-events: none;
+  opacity: 0.7;
+  padding-left: 25px !important;
+}
+
+._fancy_react_ui_btn[data-variant-type="link"][data-loading="true"] .spinner {
+  display: block;
   position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  border-style: solid;
-  border-width: 2px;
-  border-radius: 50%;
-  animation: button-spin 0.8s linear infinite;
+  left: 0;
+  height: 15px;
+  width: 15px;
 }
 
-@keyframes button-spin {
-  from {
-    transform: translate(-50%, -50%) rotate(0deg);
-  }
-  to {
-    transform: translate(-50%, -50%) rotate(360deg);
-  }
+._fancy_react_ui_btn[data-variant-type="link"][data-loading="true"]
+  .button-text {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Remove unnecessary animations for link type */
+._fancy_react_ui_btn[data-variant-type="link"] .shine,
+._fancy_react_ui_btn[data-variant-type="link"]::before,
+._fancy_react_ui_btn[data-variant-type="link"]::after {
+  display: none !important;
+}
+
+/* Link hover underline effect */
+._fancy_react_ui_btn[data-variant-type="link"] .button-text {
+  position: relative;
+}
+
+._fancy_react_ui_btn[data-variant-type="link"] .button-text::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 1px;
+  bottom: -2px;
+  left: 0;
+  background-color: currentColor;
+  transform: scaleX(0);
+  transition: transform 0.2s ease;
+}
+
+._fancy_react_ui_btn[data-variant-type="link"]:hover .button-text::after {
+  transform: scaleX(1);
+}
+
+/* Hover states for outline type */
+._fancy_react_ui_btn[data-variant-type="outline"]:hover {
+  color: white;
+}
+
+._fancy_react_ui_btn[data-variant-type="outline"][data-variant="default"]:hover {
+  background: #0d1015 !important;
+}
+
+._fancy_react_ui_btn[data-variant-type="outline"][data-variant="primary"]:hover {
+  background: #0ea5e9 !important;
+}
+
+._fancy_react_ui_btn[data-variant-type="outline"][data-variant="secondary"]:hover {
+  background: #475569 !important;
+}
+
+._fancy_react_ui_btn[data-variant-type="outline"][data-variant="success"]:hover {
+  background: #10b981 !important;
+}
+
+._fancy_react_ui_btn[data-variant-type="outline"][data-variant="warning"]:hover {
+  background: #f59e0b !important;
+}
+
+._fancy_react_ui_btn[data-variant-type="outline"][data-variant="error"]:hover {
+  background: #ef4444 !important;
+}
+
+/* Update loading state for outline variant type */
+._fancy_react_ui_btn[data-variant-type="outline"][data-loading="true"] {
+  background: transparent !important;
+}
+
+/* Update spinner colors for outline variant type based on variant */
+._fancy_react_ui_btn[data-variant-type="outline"][data-variant="default"][data-loading="true"]
+  .spinner {
+  border-top-color: #0d1015;
+  border-right-color: rgba(13, 16, 21, 0.3);
+  border-bottom-color: rgba(13, 16, 21, 0.3);
+  border-left-color: rgba(13, 16, 21, 0.3);
+}
+
+._fancy_react_ui_btn[data-variant-type="outline"][data-variant="primary"][data-loading="true"]
+  .spinner {
+  border-top-color: #0ea5e9;
+  border-right-color: rgba(14, 165, 233, 0.3);
+  border-bottom-color: rgba(14, 165, 233, 0.3);
+  border-left-color: rgba(14, 165, 233, 0.3);
+}
+
+._fancy_react_ui_btn[data-variant-type="outline"][data-variant="secondary"][data-loading="true"]
+  .spinner {
+  border-top-color: #475569;
+  border-right-color: rgba(71, 85, 105, 0.3);
+  border-bottom-color: rgba(71, 85, 105, 0.3);
+  border-left-color: rgba(71, 85, 105, 0.3);
+}
+
+._fancy_react_ui_btn[data-variant-type="outline"][data-variant="success"][data-loading="true"]
+  .spinner {
+  border-top-color: #10b981;
+  border-right-color: rgba(16, 185, 129, 0.3);
+  border-bottom-color: rgba(16, 185, 129, 0.3);
+  border-left-color: rgba(16, 185, 129, 0.3);
+}
+
+._fancy_react_ui_btn[data-variant-type="outline"][data-variant="warning"][data-loading="true"]
+  .spinner {
+  border-top-color: #f59e0b;
+  border-right-color: rgba(245, 158, 11, 0.3);
+  border-bottom-color: rgba(245, 158, 11, 0.3);
+  border-left-color: rgba(245, 158, 11, 0.3);
+}
+
+._fancy_react_ui_btn[data-variant-type="outline"][data-variant="error"][data-loading="true"]
+  .spinner {
+  border-top-color: #ef4444;
+  border-right-color: rgba(239, 68, 68, 0.3);
+  border-bottom-color: rgba(239, 68, 68, 0.3);
+  border-left-color: rgba(239, 68, 68, 0.3);
+}
+
+/* Disable hover background for outline when loading */
+._fancy_react_ui_btn[data-variant-type="outline"][data-loading="true"]:hover {
+  background: transparent !important;
+  transform: none;
+  box-shadow: none;
+}
+
+/* Update shine and border animations for outline loading state */
+._fancy_react_ui_btn[data-variant-type="outline"][data-loading="true"]::before {
+  opacity: 0;
+  animation: none;
+}
+
+._fancy_react_ui_btn[data-variant-type="outline"][data-loading="true"] .shine {
+  display: none;
+}
+
+/* Disabled state styles */
+._fancy_react_ui_btn[data-disabled="true"] {
+  cursor: not-allowed;
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+/* Hide spinner for disabled state */
+._fancy_react_ui_btn[data-disabled="true"] .spinner {
+  display: none !important;
+}
+
+/* Disable hover effects for disabled state */
+._fancy_react_ui_btn[data-disabled="true"]:hover {
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+/* Disable animations for disabled state */
+._fancy_react_ui_btn[data-disabled="true"]::before,
+._fancy_react_ui_btn[data-disabled="true"] .shine {
+  animation: none !important;
+  opacity: 0 !important;
+}
+
+/* Specific styles for outline variant when disabled */
+._fancy_react_ui_btn[data-variant-type="outline"][data-disabled="true"] {
+  background: transparent !important;
+}
+
+/* Specific styles for link variant when disabled */
+._fancy_react_ui_btn[data-variant-type="link"][data-disabled="true"] {
+  text-decoration: none !important;
+}
+
+._fancy_react_ui_btn[data-variant-type="link"][data-disabled="true"]
+  .button-text::after {
+  display: none !important;
 }

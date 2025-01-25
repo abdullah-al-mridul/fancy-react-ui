@@ -1,10 +1,14 @@
 import React from "react";
 import { createRoot } from "react-dom/client";
 import { defineComponent, onMounted, ref, h } from "vue";
-import Button from "../previewComponents/Button/Button";
+import Button from "../sandbox/Button/Button";
 
 const ButtonDemo = () => {
   const [loading, setLoading] = React.useState(false);
+
+  const h3Style = {
+    marginBottom: "20px",
+  };
 
   const handleClick = async () => {
     setLoading(true);
@@ -14,101 +18,187 @@ const ButtonDemo = () => {
 
   return (
     <div className="demo-wrapper">
-      <h3
-        style={{
-          marginBottom: "20px",
-        }}
-      >
-        Button Variants
-      </h3>
-      <div style={{ display: "flex", gap: "8px", marginBottom: "24px" }}>
-        <Button variant="primary">Primary</Button>
-        <Button variant="secondary">Secondary</Button>
-        <Button variant="outline">Outline</Button>
-        <Button variant="text">Text</Button>
-      </div>
-
-      <h3
-        style={{
-          marginBottom: "20px",
-        }}
-      >
-        Button Sizes
-      </h3>
+      {/* Solid Variants */}
+      <h3 style={h3Style}>Solid Variants</h3>
       <div
         style={{
           display: "flex",
           gap: "8px",
-          alignItems: "center",
           marginBottom: "24px",
+          flexWrap: "wrap",
         }}
       >
-        <Button size="small">Small</Button>
-        <Button size="medium">Medium</Button>
-        <Button size="large">Large</Button>
+        <Button text="Default" variant="default" />
+        <Button text="Primary" variant="primary" />
+        <Button text="Secondary" variant="secondary" />
+        <Button text="Success" variant="success" />
+        <Button text="Warning" variant="warning" />
+        <Button text="Error" variant="error" />
       </div>
 
-      <h3
+      {/* Outline Variants */}
+      <h3 style={h3Style}>Outline Variants</h3>
+      <div
         style={{
-          marginBottom: "20px",
+          display: "flex",
+          gap: "8px",
+          marginBottom: "24px",
+          flexWrap: "wrap",
         }}
       >
-        Loading State
-      </h3>
-      <div style={{ display: "flex", gap: "8px", marginBottom: "24px" }}>
-        <Button loading variant="primary">
-          Loading Primary
-        </Button>
-        <Button loading variant="secondary">
-          Loading Secondary
-        </Button>
-        <Button loading variant="outline">
-          Loading Outline
-        </Button>
+        <Button text="Default" variant="default" variantType="outline" />
+        <Button text="Primary" variant="primary" variantType="outline" />
+        <Button text="Secondary" variant="secondary" variantType="outline" />
+        <Button text="Success" variant="success" variantType="outline" />
+        <Button text="Warning" variant="warning" variantType="outline" />
+        <Button text="Error" variant="error" variantType="outline" />
       </div>
 
-      <h3
+      {/* Link Variants */}
+      <h3 style={h3Style}>Link Variants</h3>
+      <div
         style={{
-          marginBottom: "20px",
+          display: "flex",
+          gap: "8px",
+          marginBottom: "24px",
+          flexWrap: "wrap",
         }}
       >
-        Interactive Example
-      </h3>
-      <div style={{ display: "flex", gap: "8px", marginBottom: "24px" }}>
-        <Button variant="primary" loading={loading} onClick={handleClick}>
-          {loading ? "Loading..." : "Click to Load"}
-        </Button>
+        <Button text="Default" variant="default" variantType="link" />
+        <Button text="Primary" variant="primary" variantType="link" />
+        <Button text="Secondary" variant="secondary" variantType="link" />
+        <Button text="Success" variant="success" variantType="link" />
+        <Button text="Warning" variant="warning" variantType="link" />
+        <Button text="Error" variant="error" variantType="link" />
       </div>
 
-      <h3
+      {/* Loading States */}
+      <h3 style={h3Style}>Loading States</h3>
+      <div
         style={{
-          marginBottom: "20px",
+          display: "flex",
+          gap: "8px",
+          marginBottom: "24px",
+          flexWrap: "wrap",
         }}
       >
-        Disabled State
-      </h3>
-      <div style={{ display: "flex", gap: "8px", marginBottom: "24px" }}>
-        <Button disabled variant="primary">
-          Disabled Primary
-        </Button>
-        <Button disabled variant="secondary">
-          Disabled Secondary
-        </Button>
-        <Button disabled variant="outline">
-          Disabled Outline
-        </Button>
+        <Button text="Solid Loading" variant="primary" isLoading />
+        <Button
+          text="Outline Loading"
+          variant="primary"
+          variantType="outline"
+          isLoading
+        />
+        <Button
+          text="Link Loading"
+          variant="primary"
+          variantType="link"
+          isLoading
+        />
       </div>
 
-      <h3
+      {/* Disabled States */}
+      <h3 style={h3Style}>Disabled States</h3>
+      <div
         style={{
-          marginBottom: "20px",
+          display: "flex",
+          gap: "8px",
+          marginBottom: "24px",
+          flexWrap: "wrap",
         }}
       >
-        Full Width
-      </h3>
-      <Button fullWidth variant="primary" style={{ marginBottom: "24px" }}>
-        Full Width Button
-      </Button>
+        <Button text="Solid Disabled" variant="primary" disabled />
+        <Button
+          text="Outline Disabled"
+          variant="primary"
+          variantType="outline"
+          disabled
+        />
+        <Button
+          text="Link Disabled"
+          variant="primary"
+          variantType="link"
+          disabled
+        />
+      </div>
+
+      {/* Sizes */}
+      <h3 style={h3Style}>Sizes</h3>
+      <div
+        style={{
+          display: "flex",
+          gap: "8px",
+          marginBottom: "24px",
+          alignItems: "center",
+          flexWrap: "wrap",
+        }}
+      >
+        <Button text="Small" size="small" variant="primary" />
+        <Button text="Medium" size="medium" variant="primary" />
+        <Button text="Large" size="large" variant="primary" />
+        <Button text="Custom (30px)" size={30} variant="primary" />
+      </div>
+
+      {/* Interactive Example */}
+      <h3 style={h3Style}>Interactive Example</h3>
+      <div
+        style={{
+          display: "flex",
+          gap: "8px",
+          marginBottom: "24px",
+          flexWrap: "wrap",
+        }}
+      >
+        <Button
+          text={loading ? "Loading..." : "Click to Load"}
+          variant="primary"
+          isLoading={loading}
+          onClick={handleClick}
+        />
+        <Button
+          text={loading ? "Loading..." : "Outline Click"}
+          variant="primary"
+          variantType="outline"
+          isLoading={loading}
+          onClick={handleClick}
+        />
+        <Button
+          text={loading ? "Loading..." : "Link Click"}
+          variant="primary"
+          variantType="link"
+          isLoading={loading}
+          onClick={handleClick}
+        />
+      </div>
+
+      {/* With href */}
+      <h3 style={h3Style}>With href</h3>
+      <div
+        style={{
+          display: "flex",
+          gap: "8px",
+          marginBottom: "24px",
+          flexWrap: "wrap",
+        }}
+      >
+        <Button
+          text="Solid Link"
+          variant="primary"
+          href="https://example.com"
+        />
+        <Button
+          text="Outline Link"
+          variant="primary"
+          variantType="outline"
+          href="https://example.com"
+        />
+        <Button
+          text="Link Type"
+          variant="primary"
+          variantType="link"
+          href="https://example.com"
+        />
+      </div>
     </div>
   );
 };
@@ -119,13 +209,11 @@ export default defineComponent({
     const containerRef = ref();
     const isDark = ref(document.documentElement.classList.contains("dark"));
 
-    // Watch for theme changes
     const observer = new MutationObserver(() => {
       isDark.value = document.documentElement.classList.contains("dark");
     });
 
     onMounted(() => {
-      // Observe theme changes
       observer.observe(document.documentElement, {
         attributes: true,
         attributeFilter: ["class"],
@@ -134,7 +222,6 @@ export default defineComponent({
       const root = createRoot(containerRef.value);
       root.render(<ButtonDemo />);
 
-      // Cleanup
       return () => {
         observer.disconnect();
         root.unmount();

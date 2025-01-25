@@ -2,79 +2,54 @@ import React from "react";
 import "./Button.css";
 import { ButtonProps } from "./types";
 
-/**
- * Button component provides a customizable button with various styles and states
- * @param {ButtonProps} props - The props for the Button component
- * @example
- * ```tsx
- * <Button
- *   variant="primary"
- *   size="medium"
- *   onClick={() => console.log('clicked')}
- * >
- *   Click Me
- * </Button>
- * ```
- */
 const Button: React.FC<ButtonProps> = ({
-  children,
-  variant = "primary",
-  size = "medium",
-  disabled = false,
-  loading = false,
-  fullWidth = false,
-  className = "",
+  text = "Button",
   style = {},
+  size = "medium",
+  weight = "medium",
+  variant = "default",
+  variantType = "solid",
+  isLoading = false,
+  disableShine = false,
+  disableBorder = false,
+  href,
   onClick,
+  disabled = false,
   ...props
 }) => {
+  const customSize = typeof size === "number";
+
   const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
-    if (!loading && !disabled && onClick) {
-      onClick(e);
+    if (disabled) return;
+    if (href) {
+      window.open(href, "_blank", "noopener,noreferrer");
     }
-  };
-
-  const getLoaderSize = () => {
-    switch (size) {
-      case "small":
-        return 14;
-      case "large":
-        return 20;
-      default:
-        return 16;
-    }
-  };
-
-  const getLoaderColor = () => {
-    if (variant === "primary") return "white";
-    if (variant === "secondary") return "#333";
-    return "#0066ff";
+    onClick?.(e);
   };
 
   return (
     <button
-      className={`fancy-button ${variant} ${size} ${
-        fullWidth ? "full-width" : ""
-      } ${loading ? "loading" : ""} ${className}`}
-      disabled={disabled || loading}
-      style={style}
+      style={{
+        ...style,
+        ...(customSize && { fontSize: `${size}px` }),
+      }}
+      className="_fancy_react_ui_btn"
+      data-loading={isLoading}
+      data-size={customSize ? "custom" : size}
+      data-weight={weight}
+      data-variant={variant}
+      data-variant-type={variantType}
+      data-disable-shine={disableShine}
+      data-disable-border={disableBorder}
+      data-disabled={disabled}
+      disabled={disabled || isLoading}
       onClick={handleClick}
       {...props}
     >
-      <span className="button-content" style={{ opacity: loading ? 0 : 1 }}>
-        {children}
-      </span>
-      {loading && (
-        <span
-          className="button-loader"
-          style={{
-            width: getLoaderSize(),
-            height: getLoaderSize(),
-            borderColor: `${getLoaderColor()}33`,
-            borderTopColor: getLoaderColor(),
-          }}
-        />
-      )}
+      <span className="spinner" />
+      <span className="ripple" />
+      {!disableShine && <span className="shine" />}
+      <span className="button-text">{text}</span>
     </button>
   );
 };
